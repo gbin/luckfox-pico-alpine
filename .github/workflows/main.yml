@@ -6,7 +6,7 @@ on:
       - "main"
 jobs:
   build-rootfs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -20,9 +20,8 @@ jobs:
   build-system:
     strategy:
       matrix:
-        device: [ pico-mini-b, pico-plus, pico-pro-max ]
-    # runs-on: "cirun-aws-amd64--${{ github.run_id }}"
-    runs-on: ubuntu-latest
+        device: [ pico-mini-b ]
+    runs-on: ubuntu-22.04
     needs: build-rootfs
     steps:
       - name: checkout
